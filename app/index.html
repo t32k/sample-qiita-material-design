@@ -13,7 +13,10 @@
 
 <body unresolved class="fullbleed layout vertical">
   <template is="dom-bind" id="app">
-    <iron-ajax auto url="data/items.json" last-response="{{items}}"></iron-ajax>
+    <iron-ajax id="ajax"
+               url="https://qiita.com/api/v2/items"
+               handle-as="json"
+               last-response="{{items}}"></iron-ajax>
 
     <paper-drawer-panel id="paperDrawerPanel">
       <!-- Drawer Scroll Header Panel -->
@@ -46,20 +49,12 @@
       <!-- Main Area -->
       <paper-scroll-header-panel main condenses keep-condensed-header>
         
-        <paper-toolbar id="mainToolbar" class="tall">
+        <paper-toolbar id="mainToolbar">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <span class="flex"></span>
-
-          <paper-icon-button icon="search"></paper-icon-button>
-
           <div class="middle middle-container center horizontal layout">
             <div class="app-name">Qiita Reader</div>
           </div>
-
-          <div class="bottom bottom-container center horizontal layout">
-            <div class="bottom-title paper-font-subhead">プログラミング知識を共有しよう</div>
-          </div>
-
         </paper-toolbar>
 
         <!-- Main Content -->
@@ -68,6 +63,10 @@
 
             <section data-route="home">
               <paper-material elevation="1">
+               <my-search></my-search>
+              </paper-material>
+
+              <paper-material elevation="1" id="list" class="hide">
                 <my-list items="{{items}}"></my-list>
               </paper-material>
             </section>
@@ -102,7 +101,6 @@
     </paper-drawer-panel>
 
   </template>
-
   <script src="scripts/app.js"></script>
 </body>
 

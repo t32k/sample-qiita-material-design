@@ -3,3 +3,13 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
 }
+.hide {
+  display: none;
+}
+paper-input .floated-label-placeholder {
+  display: none !important;
+}
+
+paper-input .unfocused-line {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
