@@ -25,19 +25,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Listen for template bound event to know when bindings
   // have resolved and content has been stamped to the page
   app.addEventListener('dom-change', function() {
-    var ajax = document.querySelector('#ajax');
-    var list = document.querySelector('#list');
-    document.querySelector('my-search').addEventListener('queue', function (e) {
-      var query = encodeURIComponent(e.detail.query);
-      ajax.params = {"page":1, "per_page":10, "query": query };
-      ajax.generateRequest();
-      list.classList.remove('hide');
-    });
+
   });
 
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
-    // imports are loaded and elements have been registered
+
+    var ajax = document.querySelector('#js-ajax');
+    var list = document.querySelector('#js-list');
+    var search = document.querySelector('#js-search');
+    var progress = document.querySelector('#js-progress');
+
+    search.addEventListener('queue', function (e) {
+      var query = encodeURIComponent(e.detail.query);
+      ajax.params = {"page":1, "per_page":10, "query": query };
+      ajax.generateRequest();
+      progress.classList.remove('hidden');
+      list.classList.add('hidden');
+    });
+
+    ajax.addEventListener('response', function(){
+      progress.classList.add('hidden');
+      list.classList.remove('hidden');
+    });
+
   });
 
   // Main area's paper-scroll-header-panel custom condensing transformation of
@@ -77,5 +88,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   app.scrollPageToTop = function() {
     document.getElementById('mainContainer').scrollTop = 0;
   };
+
 
 })(document);

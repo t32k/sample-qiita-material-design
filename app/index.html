@@ -13,7 +13,7 @@
 
 <body unresolved class="fullbleed layout vertical">
   <template is="dom-bind" id="app">
-    <iron-ajax id="ajax"
+    <iron-ajax id="js-ajax"
                url="https://qiita.com/api/v2/items"
                handle-as="json"
                last-response="{{items}}"></iron-ajax>
@@ -59,16 +59,19 @@
 
         <!-- Main Content -->
         <div class="content">
+          <paper-progress indeterminate id="js-progress" class="hidden"></paper-progress>
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
             <section data-route="home">
+
               <paper-material elevation="1">
-               <my-search></my-search>
+                <my-search id="js-search"></my-search>
               </paper-material>
 
-              <paper-material elevation="1" id="list" class="hide">
+              <paper-material elevation="1" id="js-list" class="hidden">
                 <my-list items="{{items}}"></my-list>
               </paper-material>
+
             </section>
 
             <section data-route="users">
