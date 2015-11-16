@@ -4,7 +4,7 @@
     <div class="horizontal layout">
       <paper-icon-button icon="search"></paper-icon-button>
       <paper-input label="検索" class="flex" id="input" value="{{userInput::input}}"></paper-input>
-      <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="onEnter"></iron-a11y-keys>
+      <iron-a11y-keys id="a11y" keys="enter" on-keys-pressed="onEnter"></iron-a11y-keys>
     </div>
 
   </template>
@@ -16,7 +16,7 @@
       Polymer({
         is: 'my-search',
         onEnter: function() {
-          this.fire('queue', {query: this.$.input.value})
+          this.fire('queue', { query: this.$.input.value });
         }
       });
 
