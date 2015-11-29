@@ -10,13 +10,13 @@
   </template>
 
   <script>
-    (function () {
+    (function() {
       'use strict';
 
       Polymer({
         is: 'my-search',
         onEnter: function() {
-          this.fire('queue', { query: this.$.input.value });
+          this.fire('queue', {query: this.$.input.value});
         }
       });
 

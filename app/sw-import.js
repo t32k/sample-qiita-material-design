@@ -7,22 +7,4 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-body {
-  background: #fafafa;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
-}
-
-.hidden {
-  display: none;
-}
-paper-progress {
-  width: 100%;
-}
-paper-input .floated-label-placeholder {
-  display: none !important;
-}
-
-paper-input .unfocused-line {
-  background: rgba(255, 255, 255, 0.7) !important;
-}
+importScripts('bower_components/platinum-sw/service-worker.js');
